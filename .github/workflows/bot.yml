@@ -3,7 +3,7 @@ name: RKL-3 bot
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "0 */2 * * *"
 
 permissions:
   contents: write
@@ -36,7 +36,7 @@ jobs:
       - name: Save database
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@://github.com"
           git add data/bot.db
           git diff --cached --quiet || git commit -m "Update bot database"
           git push
