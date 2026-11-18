@@ -19,7 +19,7 @@ async def process_updates(bot,dp):
             try: await dp.feed_update(bot,u)
             except Exception: logging.exception("update error")
 async def daily_tasks(bot):
-    now=datetime.now(TIMEZONE)
+    now=datetime.datetime.now(TIMEZONE)
     if now.weekday()<5 and now.hour==MORNING_HOUR and MORNING_MINUTE<=now.minute<MORNING_MINUTE+5:
         data=await schedule_parser.get_schedule(); text="🌅 Доброе утро! Расписание РКЛ-3 на %s:\n\n"%now.date().isoformat()
         text+="\n".join(data.get("rows",[])[:40]) if data.get("ok") else data["error"]
